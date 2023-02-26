@@ -41,3 +41,16 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 }
+
+function game() {
+  const round = 5;
+  for (let i = 1; i <= round; ++i) {
+    const playerSelection = prompt("Enter your choice: ");
+    const computerSelection = getComputerChoice();
+    console.log(
+      `Game ${i} result: ${playRound(playerSelection, computerSelection)}`
+    );
+  }
+}
+
+game();
