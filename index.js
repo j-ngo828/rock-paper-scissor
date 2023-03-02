@@ -43,8 +43,8 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-  const round = 5;
-  for (let i = 1; i <= round; ++i) {
+  const round = 0;
+  for (let i = 1; i === 1; ++i) {
     const playerSelection = prompt("Enter your choice: ");
     const computerSelection = getComputerChoice();
     console.log(
@@ -53,4 +53,32 @@ function game() {
   }
 }
 
-game();
+function main() {
+  const choiceButtons = document.querySelectorAll(".choice");
+  const result = document.querySelector(".result");
+  const playerChoiceElem = document.querySelector(".my-choice");
+  const computerChoiceElem = document.querySelector(".computer-choice");
+  const roundElem = document.querySelector(".round-counter");
+  let round = 1;
+  roundElem.textContent = `Round: ${round}`;
+  const formatChoice = (choice) =>
+    `${choice[0].toUpperCase()}${choice.slice(1)}`;
+  const handleClick = (event) => {
+    const playerChoice = event.target.dataset.choice;
+    const computerChoice = getComputerChoice();
+    round++;
+    roundElem.textContent = `Round: ${round}`;
+    playerChoiceElem.textContent = `You chose ${formatChoice(playerChoice)}`;
+    computerChoiceElem;
+    computerChoiceElem.textContent = `Computer chose ${formatChoice(
+      computerChoice
+    )}`;
+    const roundResult = playRound(playerChoice, computerChoice);
+    result.textContent = roundResult;
+  };
+  choiceButtons.forEach((button) =>
+    button.addEventListener("click", handleClick)
+  );
+}
+
+main();
