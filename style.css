@@ -41,7 +41,7 @@ button:hover {
   /* min-height: 100px; */
 }
 
-.result {
+.round-result {
   display: flex;
   justify-content: center;
 }
